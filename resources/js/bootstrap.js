@@ -54,3 +54,6 @@ if (token) {
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+// Add admin lte
+require('admin-lte');

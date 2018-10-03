@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Product;
+use App\Purchase;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class PurchaseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('products.index');
+        return view('purchases.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('products.create');
+        return view('purchases.create');
     }
 
     /**
@@ -35,53 +35,51 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $product = Product::store([]);
-        return rediect()->route('product.show', compact('product'));
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Product  $product
+     * @param  \App\Purchase  $purchase
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show(Purchase $purchase)
     {
-        return view('product.show');
+        return view('purchases.show', compact('purchase'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Product  $product
+     * @param  \App\Purchase  $purchase
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit(Purchase $purchase)
     {
-        return view('product.edit', compact('product'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Product  $product
+     * @param  \App\Purchase  $purchase
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, Purchase $purchase)
     {
-        $product->edit([]);
-        return redirect()->route('product.show', compact('product'));
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Product  $product
+     * @param  \App\Purchase  $purchase
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy(Purchase $purchase)
     {
-        return redirect()->route('product.index');
+        //
     }
 }

@@ -5,10 +5,11 @@ namespace Tests\Unit;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\Product;
 
 class ProductTest extends TestCase
 {
-    use RefreshDatabase;
+    use RefreshDatabase, WithFaker;
 
     /**
      * Its belongs to many units.
@@ -37,5 +38,39 @@ class ProductTest extends TestCase
 
         $this->assertInstanceOf('Illuminate\Database\Eloquent\Collection', $product->prices);
         self::assertContains($price->toArray(), $product->prices->toArray());
+    }
+
+    /**
+     * Its can store new product.
+     *
+     * @return void
+     */
+    public function testStoreNewProduct()
+    {
+        $request = [
+            'name' => $this->faker->name,
+            'description' => $this->faker->sentence
+        ];
+        $product = Product::store($request);
+        $this->assertInstanceOf('App\Product', $product);
+        $this->assertDatabaseHas('products', $request);
+    }
+
+    /**
+     * Its can edit a product.
+     *
+     * @return void
+     */
+    public function testEditProduct()
+    {
+        $request = [
+            'name' => $this->faker->name,
+            'description' => $this->faker->sentence
+        ];
+        $product = factory(Product::class)->create();
+        $product->edit($request);
+
+        $this->assertInstanceOf('App\Product', $product);
+        $this->assertDatabaseHas('products', $request);
     }
 }

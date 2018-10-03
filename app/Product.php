@@ -15,4 +15,18 @@ class Product extends Model
     public function prices() {
         return $this->hasMany(Price::class);
     }
+
+    public static function store(array $request) {
+        return self::create([
+            'name' => $request['name'],
+            'description' => $request['description']
+        ]);
+    }
+
+    public function edit(array $request) {
+        return $this->update([
+            'name' => $request['name'],
+            'description' => $request['description']
+        ]);
+    }
 }

@@ -3,7 +3,7 @@
 @section('content')
   <div class="login-box" id="app">
     <div class="login-logo">
-      <a href="{{ url('/') }}"><b>Quick</b>Count</a>
+      <a href="{{ url('/') }}"><b>Cashier</b></a>
     </div>
     <div class="login-box-body">
       <p class="login-box-msg">Sign in to start your session</p>

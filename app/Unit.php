@@ -18,7 +18,8 @@ class Unit extends Model
      *
      * @return void
      */
-    public function products() {
+    public function products()
+    {
         return $this->belongsToMany(Product::class, 'prices', 'unit_id', 'product_id');
     }
 
@@ -28,10 +29,11 @@ class Unit extends Model
      * @param array $request
      * @return void
      */
-    public static function store(array $request) {
-      return self::create([
-        'name' => $request['name']
-      ]);
+    public static function store(array $request)
+    {
+        return self::create([
+          'name' => $request['name']
+        ]);
     }
 
     /**
@@ -40,9 +42,10 @@ class Unit extends Model
      * @param array $request
      * @return void
      */
-    public function edit(array $request) {
-      return $this->update([
-        'name' => $request['name']
-      ]);
+    public function edit(array $request)
+    {
+        return $this->update([
+          'name' => $request['name']
+        ]);
     }
 }

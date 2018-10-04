@@ -14,8 +14,6 @@
 
   <div class="wrapper" id="app">
 
-    @include('flash::message')
-
     @include('partials/header')
 
     @include('partials/sidebar')
@@ -31,6 +29,9 @@
   </div>
 
 <script src="{{ mix('js/app.js') }}"></script>
+
+@include('flash::message')
+@yield('js')
 
 </body>
 </html>

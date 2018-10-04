@@ -22,7 +22,8 @@ class Price extends Model
      *
      * @return void
      */
-    public function product() {
+    public function product()
+    {
         return $this->belongsTo(Product::class);
     }
 
@@ -31,7 +32,8 @@ class Price extends Model
      *
      * @return void
      */
-    public function unit() {
+    public function unit()
+    {
         return $this->belongsTo(Unit::class);
     }
 }

@@ -11,7 +11,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class UnitTest extends TestCase
 {
-    use RefreshDatabase;
+    use RefreshDatabase, WithFaker;
 
     /**
      * Its belongs to many product.
@@ -26,5 +26,35 @@ class UnitTest extends TestCase
 
         self::assertInstanceOf('Illuminate\Database\Eloquent\Collection', $unit->products);
         self::assertContains($product->name, $unit->products->pluck('name'));
+    }
+
+    /**
+     * testStoreNewUnit
+     *
+     * @return void
+     */
+    public function testStoreNewUnit()
+    {
+        $request = [
+          'name' => $this->faker->word
+        ];
+        $unit = Unit::store($request);
+        $this->assertDatabaseHas('units', $request);
+    }
+
+    /**
+     * testEditUnit
+     *
+     * @return void
+     */
+    public function testEditUnit()
+    {
+        $request = [
+          'name' => $this->faker->word
+        ];
+        $unit = factory(Unit::class)->create();
+        $unit->edit($request);
+
+        $this->assertDatabaseHas('units', $request);
     }
 }

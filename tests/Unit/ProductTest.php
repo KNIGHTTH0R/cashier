@@ -2,10 +2,12 @@
 
 namespace Tests\Unit;
 
+use App\Unit;
+use App\Price;
+use App\Product;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Product;
 
 class ProductTest extends TestCase
 {
@@ -18,9 +20,9 @@ class ProductTest extends TestCase
      */
     public function testProductBelongsToManyUnits()
     {
-        $product = factory(\App\Product::class)->create();
-        $unit = factory(\App\Unit::class)->create();
-        $price = factory(\App\Price::class)->create(['product_id' => $product->id, 'unit_id' => $unit->id]);
+        $product = factory(Product::class)->create();
+        $unit = factory(Unit::class)->create();
+        $price = factory(Price::class)->create(['product_id' => $product->id, 'unit_id' => $unit->id]);
 
         self::assertInstanceOf('Illuminate\Database\Eloquent\Collection', $product->units);
         self::assertContains($unit->name, $product->units->pluck('name'));
@@ -33,8 +35,8 @@ class ProductTest extends TestCase
      */
     public function testProductHasManyPrices()
     {
-        $product = factory(\App\Product::class)->create();
-        $price = factory(\App\Price::class)->create(['product_id' => $product->id]);
+        $product = factory(Product::class)->create();
+        $price = factory(Price::class)->create(['product_id' => $product->id]);
 
         $this->assertInstanceOf('Illuminate\Database\Eloquent\Collection', $product->prices);
         self::assertContains($price->toArray(), $product->prices->toArray());

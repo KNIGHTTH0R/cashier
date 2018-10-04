@@ -2,6 +2,7 @@
 
 namespace Tests\Unit;
 
+use App\Price;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -17,7 +18,7 @@ class PriceTest extends TestCase
      */
     public function testPriceBelongsToProduct()
     {
-        $price = factory(\App\Price::class)->create();
+        $price = factory(Price::class)->create();
         $this->assertInstanceOf('App\Product', $price->product);
     }
 
@@ -28,7 +29,7 @@ class PriceTest extends TestCase
      */
     public function testPriceBelongsToUnit()
     {
-        $price = factory(\App\Price::class)->create();
+        $price = factory(Price::class)->create();
         $this->assertInstanceOf('App\Unit', $price->unit);
     }
 }

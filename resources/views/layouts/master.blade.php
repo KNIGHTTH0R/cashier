@@ -11,8 +11,10 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
-<!-- Site wrapper -->
+
   <div class="wrapper" id="app">
+
+    @include('flash::message')
 
     @include('partials/header')
 
@@ -28,20 +30,7 @@
 
   </div>
 
-
 <script src="{{ mix('js/app.js') }}"></script>
- <script>
- $('#edit').on('show.bs.modal', function (event) {
-      var button = $(event.relatedTarget)
-      var name = button.data('myname')
-      var email = button.data('myemail')
-      var modal = $(this)
-      modal.find('.modal-body #name').val(name);
-      modal.find('.modal-body #email').val(email);
-
-})
-
-</script>
 
 </body>
 </html>

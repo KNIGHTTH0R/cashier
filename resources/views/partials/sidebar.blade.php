@@ -24,19 +24,23 @@
     <!-- /.search form -->
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu" data-widget="tree">
+
       <li class="header">MAIN NAVIGATION</li>
+
       <li class="{{ request()->is('home') ? 'active': ''}}">
         <a href="{{ url('home') }}">
           <i class="fa fa-dashboard"></i>
           <span>Home</span>
         </a>
       </li>
+
       <li class="{{ request()->is('cashier') ? 'active': ''}}">
         <a href="{{ route('cashier') }}">
           <i class="fa fa-calculator"></i>
           <span>Cashier</span>
         </a>
       </li>
+
       <li class="treeview {{ request()->is('product*') ? 'active': ''}}">
         <a href="#">
           <i class="fa fa-barcode"></i>
@@ -60,6 +64,7 @@
           </li>
         </ul>
       </li>
+
       <li class="treeview {{ request()->is('purchase*') ? 'active': ''}}">
         <a href="#">
           <i class="fa fa-shopping-cart"></i>
@@ -83,7 +88,33 @@
           </li>
         </ul>
       </li>
+
+      <li class="treeview {{ request()->is('purchase*') ? 'active': ''}}">
+        <a href="#">
+          <i class="fa fa-file"></i>
+          <span>Report</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li class="{{ request()->is('purchase') ? 'active': ''}}">
+            <a href="{{ route('purchase.index') }}">
+              <i class="fa fa-circle-o"></i>
+              <span>Sales</span>
+            </a>
+          </li>
+          <li class="{{ request()->is('purchase/create') ? 'active': ''}}">
+            <a href="{{ route('purchase.create') }}">
+              <i class="fa fa-circle-o"></i>
+              <span>Purchase</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+
       <li class="header">SETTING</li>
+
       <li class="treeview {{ request()->is('unit*') ? 'active': ''}}">
         <a href="#">
           <i class="fa fa-balance-scale"></i>

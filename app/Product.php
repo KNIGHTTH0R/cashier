@@ -20,7 +20,8 @@ class Product extends Model
      *
      * @return void
      */
-    public function units() {
+    public function units()
+    {
         return $this->belongsToMany(Unit::class, 'prices', 'product_id', 'unit_id');
     }
 
@@ -29,7 +30,8 @@ class Product extends Model
      *
      * @return void
      */
-    public function prices() {
+    public function prices()
+    {
         return $this->hasMany(Price::class);
     }
 
@@ -39,7 +41,8 @@ class Product extends Model
      * @param array $request
      * @return void
      */
-    public static function store(array $request) {
+    public static function store(array $request)
+    {
         return self::create([
             'name' => $request['name'],
             'description' => $request['description']
@@ -52,10 +55,22 @@ class Product extends Model
      * @param array $request
      * @return void
      */
-    public function edit(array $request) {
+    public function edit(array $request)
+    {
         return $this->update([
             'name' => $request['name'],
             'description' => $request['description']
         ]);
+    }
+
+    /**
+     * price
+     *
+     * @param mixed $unit_id
+     * @return void
+     */
+    public function price($unit_id)
+    {
+        return $this->prices->where('unit_id', $unit_id)->first()->price;
     }
 }

@@ -17,10 +17,10 @@ class CreateOrdersTable extends Migration
             $table->increments('id');
             $table->string('number');
             $table->unsignedInteger('customer_id');
-            $table->decimal('total', 15, 2);
-            $table->decimal('sub_total', 15, 2);
-            $table->decimal('discount', 15, 2);
-            $table->decimal('tax', 15, 2);
+            $table->decimal('total', 15, 2)->default(0);
+            $table->decimal('sub_total', 15, 2)->default(0);
+            $table->decimal('discount', 15, 2)->default(0);
+            $table->decimal('tax', 15, 2)->default(0);
             $table->timestamps();
         });
     }

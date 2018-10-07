@@ -23,7 +23,7 @@
             </div>
 
             <div class="mt-10">
-              <input type="text" class="form-control" placeholder="Search product by name or code">
+              {!! Form::select('product_id', \App\Product::options(), null, ['class' => 'form-control select2', 'placeholder' => 'Search product by name or code']) !!}
             </div>
 
           </div>
@@ -109,4 +109,12 @@
 
   </section>
 
+@endsection
+
+@section('js')
+  <script>
+    $(function(){
+      $('.select2').select2();
+    });
+  </script>
 @endsection

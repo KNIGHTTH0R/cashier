@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Unit;
 use Illuminate\Http\Request;
+use App\Http\Requests\Unit\StoreRequest;
 
 class UnitController extends Controller
 {
@@ -14,7 +15,8 @@ class UnitController extends Controller
      */
     public function index()
     {
-        return view('units.index');
+        $units = Unit::all();
+        return view('units.index', compact('units'));
     }
 
     /**
@@ -33,9 +35,10 @@ class UnitController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
-        return redirect()->route('unit.show');
+        $unit = Unit::store($request->validated());
+        return redirect()->route('unit.index');
     }
 
     /**

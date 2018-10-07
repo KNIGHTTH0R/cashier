@@ -41,32 +41,28 @@ class Order extends Model
      */
     public static function store(array $request)
     {
-        $sub_total = 0;
         $order = self::create([
             'number' => $request['number'],
             'customer_id' => $request['customer_id'],
+            'tax' => $request['tax'],
+            'discount' => $request['discount'],
         ]);
 
-        foreach ($request['order']['items'] as $item) {
+        foreach ($request['items'] as $item) {
             $product = Product::find($item['product_id']);
             $price = $product->price($item['unit_id']);
-
-            OrderItem::create([
-                'order_id' => $order->id,
-                'product_id' => $product->id,
-                'unit_id' => $item['unit_id'],
-                'quantity' => $item['quantity'],
-                'price' => $price
-            ]);
-            $sub_total += $price * $item['quantity'];
+            $data = [
+              'order_id' => $order->id,
+              'product_id' => $product->id,
+              'unit_id' => $item['unit_id'],
+              'quantity' => $item['quantity'],
+              'price' => $price
+            ];
+            OrderItem::store($data);
         }
+        $order->calculate();
 
-        $order->edit([
-            'sub_total' => $sub_total,
-            'tax' => $item['tax'],
-            'discount' => $item['discount'],
-            'total' => $sub_total - $item['discount'] + $item['tax']
-        ]);
+        return $order;
     }
 
     /**
@@ -86,7 +82,7 @@ class Order extends Model
      *
      * @return void
      */
-    public function recalculate()
+    public function calculate()
     {
         $sub_total = 0;
         foreach ($this->order_items as $item) {

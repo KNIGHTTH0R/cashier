@@ -36,6 +36,16 @@ class Product extends Model
     }
 
     /**
+     * options
+     *
+     * @return void
+     */
+    public static function options()
+    {
+        return self::all()->pluck('name', 'id');
+    }
+
+    /**
      * store
      *
      * @param array $request

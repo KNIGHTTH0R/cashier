@@ -42,4 +42,21 @@ class OrderItem extends Model
     {
         return $this->belongsTo(Unit::class);
     }
+
+    /**
+     * store
+     *
+     * @param array $request
+     * @return void
+     */
+    public static function store(array $request)
+    {
+        return self::create([
+          'order_id' => $request['order_id'],
+          'product_id' => $request['product_id'],
+          'unit_id' => $request['unit_id'],
+          'quantity' => $request['quantity'],
+          'price' => $request['price'],
+        ]);
+    }
 }

@@ -44,7 +44,7 @@
                     <td>{{ $unit->name }}</td>
                     <td>{{ $unit->code }}</td>
                     <td>
-                      <a href="{{ route('unit.edit', $unit) }}" class="text-green mr-10" data-toggle="tooltip" title="Edit"><i class="fa fa-pencil"></i></a>
+                      <edit-button url="{{ route('unit.update', $unit) }}" object="{{ $unit }}"></edit-button>
                       <a href="{{ route('unit.show', $unit) }}" class="text-blue mr-10" data-toggle="toottip" title="Show"><i class="fa fa-eye"></i></a>
                       <a href="{{ route('unit.destroy', $unit) }}" class="text-red" data-toggle="tooltip" title="Delete"><i class="fa fa-trash"></i></a>
                     </td>
@@ -60,19 +60,7 @@
         </div>
       </div>
 
-      <div class="col-md-6 hidden">
-        <div class="box box-success">
 
-          <div class="box-header with-border">
-            Edit Unit
-          </div>
-
-          <div class="box-body">
-
-          </div>
-
-        </div>
-      </div>
 
     </div>
   </section>

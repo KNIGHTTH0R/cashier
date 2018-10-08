@@ -17,7 +17,16 @@
 <script>
     export default {
         mounted() {
-            console.log('Component mounted.')
+            console.log('Component mounted.');
+            setTimeout(() => {
+                this.testEvent();
+            }, 1000);
+        },
+
+        methods: {
+            testEvent(){
+                this.$event.$emit('example', {'': ''});
+            }
         }
     }
 </script>

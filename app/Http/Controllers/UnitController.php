@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Unit;
 use Illuminate\Http\Request;
 use App\Http\Requests\Unit\StoreRequest;
+use App\Http\Requests\Unit\UpdateRequest;
 
 class UnitController extends Controller
 {
@@ -70,9 +71,10 @@ class UnitController extends Controller
      * @param  \App\Unit  $unit
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Unit $unit)
+    public function update(UpdateRequest $request, Unit $unit)
     {
-        return redirect()->route('unit.show');
+        $unit->edit($request->validated());
+        return redirect()->route('unit.show', $unit);
     }
 
     /**
@@ -83,6 +85,7 @@ class UnitController extends Controller
      */
     public function destroy(Unit $unit)
     {
+        $unit->delete();
         return redirect()->route('unit.index');
     }
 }

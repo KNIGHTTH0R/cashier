@@ -28,18 +28,26 @@
     export default {
         data() {
             return {
-                url: null
+                url: null,
+                form: {
+                  name: null,
+                  code: null
+                }
             }
         },
 
         mounted() {
             this.$event.$on('show-edit', (data) => {
-                console.log(data);
+                setData(data);
             });
         },
 
         methods: {
-
+          setData(data){
+            this.url = data.url;
+            this.form.name = data.object.name;
+            this.form.code = data.object.code;
+          }
         }
     }
 </script>

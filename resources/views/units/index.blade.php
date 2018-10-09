@@ -22,6 +22,7 @@
 
   <section class="content">
     <div class="row">
+
       <div class="col-md-6">
         <div class="box">
           <div class="box-header with-border">
@@ -43,10 +44,10 @@
                     <td>{{ $index + 1}}</td>
                     <td>{{ $unit->name }}</td>
                     <td>{{ $unit->code }}</td>
-                    <td>
-                      <edit-button url="{{ route('unit.update', $unit) }}" object="{{ $unit }}"></edit-button>
+                    <td style="display: inline-flex; width: 100%;">
+                      <a href="{{ route('unit.edit', $unit) }}" class="text-yellow mr-10" data-toggle="tooltip" title="show"><i class="fa fa-pencil"></i></a>
                       <a href="{{ route('unit.show', $unit) }}" class="text-blue mr-10" data-toggle="toottip" title="Show"><i class="fa fa-eye"></i></a>
-                      <a href="{{ route('unit.destroy', $unit) }}" class="text-red" data-toggle="tooltip" title="Delete"><i class="fa fa-trash"></i></a>
+                      <delete-model url="{{ route('unit.destroy', $unit) }}"></delete-model>
                     </td>
                   </tr>
                 @empty
@@ -59,8 +60,6 @@
           </div>
         </div>
       </div>
-
-
 
     </div>
   </section>

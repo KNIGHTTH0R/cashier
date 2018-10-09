@@ -17,8 +17,9 @@ Vue.prototype.$event = new Vue();
  */
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
-Vue.component('edit-button', require('./components/EditButton.vue'));
-Vue.component('edit-form', require('./components/EditForm.vue'));
+Vue.component('edit-button', require('./components/units/EditButton.vue'));
+Vue.component('edit-form', require('./components/units/EditForm.vue'));
+Vue.component('delete-model', require('./components/DeleteModel.vue'));
 
 const app = new Vue({
     el: '#app'

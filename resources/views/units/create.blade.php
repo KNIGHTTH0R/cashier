@@ -26,7 +26,7 @@
 
       <div class="col-md-6">
         <div class="box box-primary">
-          {!! Form::model('unit', ['route' => 'unit.store']) !!}
+          {!! Form::open(['route' => 'unit.store']) !!}
             <div class="box-header with-border">
               Create new unit
             </div>

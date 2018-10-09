@@ -11,7 +11,7 @@
       <form action="{{ route('login') }}" method="post">
         @csrf
         <div class="form-group has-feedback">
-            <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus placeholder="First name">
+            <input id="email" type="text" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus placeholder="Username or Email">
           <span class="glyphicon glyphicon-envelope form-control-feedback">
             @if ($errors->has('email'))
               <span class="invalid-feedback" role="alert">
@@ -44,9 +44,6 @@
         </div>
 
       </form>
-
-      <a href="{{ route('password.request') }}">{{ __('Forgot Your Password?') }}</a><br>
-      <a href="{{ route('register') }}" class="text-center">Register a new membership</a>
 
     </div>
   </div>

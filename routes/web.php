@@ -26,4 +26,6 @@ Route::group(['middlewar' => 'auth'], function () {
     Route::resource('product', 'ProductController');
     Route::resource('purchase', 'PurchaseController');
     Route::resource('unit', 'UnitController');
+
+    Route::resource('user', 'UserController');
 });

@@ -21,6 +21,8 @@ Vue.component('edit-button', require('./components/units/EditButton.vue'));
 Vue.component('edit-form', require('./components/units/EditForm.vue'));
 Vue.component('delete-model', require('./components/DeleteModel.vue'));
 
+Vue.component('cashier', require('./components/cashier/Cashier.vue'));
+
 const app = new Vue({
     el: '#app'
 });

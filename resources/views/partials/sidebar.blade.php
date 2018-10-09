@@ -138,6 +138,15 @@
           </li>
         </ul>
       </li>
+
+      @can('manage_user')
+        <li class="{{ request()->is('user') ? 'active': ''}}">
+          <a href="{{ route('user.index') }}">
+            <i class="fa fa-users"></i>
+            <span>Users</span>
+          </a>
+        </li>
+      @endcan
     </ul>
   </section>
   <!-- /.sidebar -->

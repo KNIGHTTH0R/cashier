@@ -22,4 +22,9 @@ class Customer extends Model
     {
         return $this->hasMany(Order::class);
     }
+
+    public static function options()
+    {
+        return self::all()->pluck('name', 'id');
+    }
 }

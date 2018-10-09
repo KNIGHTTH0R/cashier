@@ -25,7 +25,12 @@
 
         methods: {
             testEvent(){
-                this.$event.$emit('example', {'': ''});
+                axios({
+                  method: 'get',
+                  url: route('api.customer.options')
+                }).then((response) => {
+                  console.log(response);
+                });
             }
         }
     }

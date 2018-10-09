@@ -1,7 +1,8 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use App\User;
+use App\Customer;
+use Illuminate\Database\Seeder;
 
 class UsersTableSeeder extends Seeder
 {
@@ -20,6 +21,15 @@ class UsersTableSeeder extends Seeder
             'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
             'remember_token' => str_random(10),
         ];
-        factory(User::class)->create($admin);
+        $admin = factory(User::class)->create($admin);
+        $admin->assignRole('super');
+
+        // Customer Default
+        $customer = [
+          'name' => 'Walk in customer',
+          'phone' => null,
+          'gender' => 'male'
+        ];
+        factory(Customer::class)->create($customer);
     }
 }

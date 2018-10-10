@@ -29,4 +29,25 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * store
+     *
+     * @param array $request
+     * @return $this
+     */
+    public static function store(array $request)
+    {
+        $user = self::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'username' => $request['username'],
+            'password' => $request['password'] ? bcrypt($request['password']) : bcrypt('secret')
+        ]);
+        if (array_key_exists('roles', $request)) {
+            $user->assignRole($request['roles']);
+        }
+
+        return $user;
+    }
 }

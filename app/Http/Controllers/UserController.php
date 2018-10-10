@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use App\Http\Requests\User\StoreRequest;
 
 class UserController extends Controller
 {
@@ -14,7 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::with('roles')->get();
         return view('users.index', compact('users'));
     }
 
@@ -34,9 +35,10 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
-        return redirect()->route('user.index');
+        $user = User::store($request->validated());
+        return redirect()->route('user.index', $user);
     }
 
     /**

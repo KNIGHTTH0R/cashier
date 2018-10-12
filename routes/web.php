@@ -21,7 +21,7 @@ Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['middlewar' => 'auth'], function () {
+Route::group(['middleware' => 'auth'], function () {
     Route::get('cashier', 'CashierController@index')->name('cashier');
     Route::resource('product', 'ProductController');
     Route::resource('purchase', 'PurchaseController');

@@ -36,7 +36,8 @@ class UnitTest extends TestCase
     public function testStoreNewUnit()
     {
         $request = [
-          'name' => $this->faker->word
+          'name' => $this->faker->word,
+          'code' => $this->faker->word
         ];
         $unit = Unit::store($request);
         $this->assertDatabaseHas('units', $request);
@@ -50,7 +51,8 @@ class UnitTest extends TestCase
     public function testEditUnit()
     {
         $request = [
-          'name' => $this->faker->word
+          'name' => $this->faker->word,
+          'code' => $this->faker->word
         ];
         $unit = factory(Unit::class)->create();
         $unit->edit($request);

@@ -17,7 +17,21 @@
 <script>
     export default {
         mounted() {
-            console.log('Component mounted.')
+            console.log('Component mounted.');
+            setTimeout(() => {
+                this.testEvent();
+            }, 1000);
+        },
+
+        methods: {
+            testEvent(){
+                axios({
+                  method: 'get',
+                  url: route('api.customer.options')
+                }).then((response) => {
+                  console.log(response);
+                });
+            }
         }
     }
 </script>

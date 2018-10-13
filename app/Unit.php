@@ -11,7 +11,7 @@ class Unit extends Model
      *
      * @var array
      */
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'code'];
 
     /**
      * products
@@ -24,6 +24,16 @@ class Unit extends Model
     }
 
     /**
+     * options
+     *
+     * @return array
+     */
+    public static function options()
+    {
+        return self::all()->pluck('name', 'id');
+    }
+
+    /**
      * store
      *
      * @param array $request
@@ -32,7 +42,8 @@ class Unit extends Model
     public static function store(array $request)
     {
         return self::create([
-          'name' => $request['name']
+          'name' => $request['name'],
+          'code' => $request['code']
         ]);
     }
 
@@ -45,7 +56,8 @@ class Unit extends Model
     public function edit(array $request)
     {
         return $this->update([
-          'name' => $request['name']
+          'name' => $request['name'],
+          'code' => $request['code']
         ]);
     }
 }

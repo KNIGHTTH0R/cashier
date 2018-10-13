@@ -59,3 +59,9 @@ if (token) {
 
 // Add admin lte
 require('admin-lte');
+
+require('select2');
+
+$(function(){
+  $('.select2').select2();
+});

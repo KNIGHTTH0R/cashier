@@ -9,6 +9,7 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+Vue.prototype.$event = new Vue();
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -16,6 +17,11 @@ window.Vue = require('vue');
  */
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('edit-button', require('./components/units/EditButton.vue'));
+Vue.component('edit-form', require('./components/units/EditForm.vue'));
+Vue.component('delete-model', require('./components/DeleteModel.vue'));
+
+Vue.component('cashier', require('./components/cashier/Cashier.vue'));
 
 const app = new Vue({
     el: '#app'

@@ -89,7 +89,7 @@
         </ul>
       </li>
 
-      <li class="treeview {{ request()->is('purchase*') ? 'active': ''}}">
+      <li class="treeview {{ request()->is('report*') ? 'active': ''}}">
         <a href="#">
           <i class="fa fa-file"></i>
           <span>Report</span>
@@ -98,14 +98,14 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li class="{{ request()->is('purchase') ? 'active': ''}}">
-            <a href="{{ route('purchase.index') }}">
+          <li class="{{ request()->is('report/sales') ? 'active': ''}}">
+            <a href="{{ route('report.sales') }}">
               <i class="fa fa-circle-o"></i>
               <span>Sales</span>
             </a>
           </li>
-          <li class="{{ request()->is('purchase/create') ? 'active': ''}}">
-            <a href="{{ route('purchase.create') }}">
+          <li class="{{ request()->is('report/purchase') ? 'active': ''}}">
+            <a href="{{ route('report.purchase') }}">
               <i class="fa fa-circle-o"></i>
               <span>Purchase</span>
             </a>
@@ -138,6 +138,15 @@
           </li>
         </ul>
       </li>
+
+      @can('manage_user')
+        <li class="{{ request()->is('user') ? 'active': ''}}">
+          <a href="{{ route('user.index') }}">
+            <i class="fa fa-users"></i>
+            <span>Users</span>
+          </a>
+        </li>
+      @endcan
     </ul>
   </section>
   <!-- /.sidebar -->

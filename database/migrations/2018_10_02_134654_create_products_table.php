@@ -17,6 +17,7 @@ class CreateProductsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('description');
+            $table->unsignedBigInteger('stok')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

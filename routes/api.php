@@ -13,6 +13,11 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(['middleware' => 'auth:api', 'as' => 'api.'], function () {
+    Route::get('/user', function (Request $request) {
+        return $request->user();
+    })->name('user');
+
+    Route::get('/customer/options', 'CustomerController@options')->name('customer.options');
+    Route::get('/product/options', 'ProductController@options')->name('product.options');
 });

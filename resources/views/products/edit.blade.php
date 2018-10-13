@@ -10,6 +10,18 @@
     </ol>
   </section>
 
-  <section class="content"></section>
+  <section class="content">
+  	<div class="form-group">
+		        	<label for="title">name</label>
+		        	<input type="text" class="form-control" name="title"  id="title">
+	        	</div>
+
+	        	<div class="form-group">
+		        	<label for="title">email</label>
+		        	<input type="text" class="form-control" name="title" id="title">
+	        	</div>
+	        	</div>
+
+  </section>
 
 @endsection

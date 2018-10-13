@@ -4,27 +4,47 @@
 
   <section class="content-header">
     <h1>
-      Product
-      <small>Index</small>
+      Daftar
+      <small>Product</small>
     </h1>
-    <ol class="breadcrumb">
-      <li class="active">Home</li>
-      <li></li>
-    </ol>
-  </section>
-
-  <section class="content">
-
+    
+  <div class="container">
+  <table class="table">
+    
     <div class="row">
-      <div class="col-md-12">
-        <div class="box">
-          <div class="box-header with-border"></div>
-          <div class="box-body"></div>
-          <div class="box-footer"></div>
-        </div>
-      </div>
+    <div class="col-md-2">
+    <input type="text" class="form-control" placeholder="search">
     </div>
+   <button type="submit" class="btn btn-danger">reset</button>
+    
+<div class="container">
+  <table class="table">
+    <thead>
+    <tr class="table table-light">
+        <th>nama product</th>
+        <th>deskripsi</th>
+        <th>harga</th>
+        <th>modify</th>
 
-  </section>
+     </tr>
+    </thead>
+    <tbody>     
+      <tr class="success">
+        <td>#</td>
+        <td>#</td>
+        <td>#</td>
+        <td>
+           <a href="#"button type="submit"button class="btn btn-info">Edit</a>
+                  <form action="#"  method="post">
+                    {{ csrf_field() }}
+                    {{ method_field('DELETE') }}
+                    <button type="submit" class="btn btn-danger">Delete</button>
+
+      </tr>
+      
+    </tbody>
+  </table>
+</div>
+
 
 @endsection

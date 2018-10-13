@@ -25,9 +25,9 @@
     <div class="row">
       <div class="col-md-12">
         <div class="box box-warning">
-            {!! Form::model($user, ['route' => 'user.update']) !!}
+            {!! Form::model($user, ['route' => ['user.update', $user]]) !!}
                 <div class="box-header with-border">
-                Edit User
+                  Edit User
                 </div>
 
                 <div class="box-body">
@@ -65,7 +65,7 @@
 
                     <div class="form-group {{ $errors->has('roles') ? 'has-error': '' }}">
                         {!! Form::label('roles') !!}
-                        {!! Form::select('roles[]', \App\Role::options(), null, ['class' => 'form-control select2', 'multiple' => true]) !!}
+                        {!! Form::select('roles[]', \App\Role::options(), $user->getRoleNames(), ['class' => 'form-control select2', 'multiple' => true]) !!}
                         @if($errors->has('roles'))
                         <span class="help-block">{{ $errors->first('roles') }}</span>
                         @endif
@@ -74,6 +74,7 @@
 
                 <div class="box-footer">
                 {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+                <a href="{{ route('user.index') }}" class="btn btn-default pull-right">Cancel</a>
                 </div>
             {!! Form::close() !!}
         </div>

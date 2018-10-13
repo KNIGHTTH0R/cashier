@@ -61,3 +61,7 @@ if (token) {
 require('admin-lte');
 
 require('select2');
+
+$(function(){
+  $('.select2').select2();
+});

@@ -34,11 +34,3 @@
   </section>
 
 @endsection
-
-@section('js')
-  <script>
-    $(function(){
-      $('.select2').select2();
-    });
-  </script>
-@endsection

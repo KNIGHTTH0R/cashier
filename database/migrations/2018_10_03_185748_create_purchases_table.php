@@ -15,6 +15,13 @@ class CreatePurchasesTable extends Migration
     {
         Schema::create('purchases', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('product_id');
+            $table->unsignedInteger('unit_id');
+            $table->unsignedInteger('suplier_id')->nullable();
+            $table->unsignedBigInteger('quantity');
+            $table->decimal('price', 15, 2)->nullable(false);
+            $table->decimal('total_price', 15, 2)->default(0);
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

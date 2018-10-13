@@ -2,35 +2,21 @@
 
 namespace App;
 
+use App\Purchase;
 use Illuminate\Database\Eloquent\Model;
 
-class Unit extends Model
+class Suplier extends Model
 {
-    /**
-     * $fillable
-     *
-     * @var array
-     */
-    protected $fillable = ['name', 'code'];
+    protected $fillable = ['name', 'address', 'phone_number'];
 
     /**
-     * products
+     * purchases
      *
      * @return void
      */
-    public function products()
+    public function purchases()
     {
-        return $this->belongsToMany(Product::class, 'prices', 'unit_id', 'product_id');
-    }
-
-    /**
-     * options
-     *
-     * @return array
-     */
-    public static function options()
-    {
-        return self::all()->pluck('name', 'id');
+        return $this->hasMany(Purchase::class);
     }
 
     /**
@@ -43,7 +29,8 @@ class Unit extends Model
     {
         return self::create([
           'name' => $request['name'],
-          'code' => $request['code']
+          'address' => $request['address'],
+          'phone_number' => $request['phone_number']
         ]);
     }
 
@@ -57,7 +44,8 @@ class Unit extends Model
     {
         return $this->update([
           'name' => $request['name'],
-          'code' => $request['code']
+          'address' => $request['address'],
+          'phone_number' => $request['phone_number']
         ]);
     }
 }

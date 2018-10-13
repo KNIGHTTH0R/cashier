@@ -25,7 +25,10 @@
     <div class="row">
       <div class="col-md-12">
         <div class="box">
-          <div class="box-header with-border"></div>
+          <div class="box-header with-border">
+            User List
+            <a href="{{ route('user.create') }}" class="btn btn-primary pull-right">New</a>
+          </div>
           <div class="box-body">
             <table class="table table-bordered">
               <tbody>
@@ -48,7 +51,6 @@
                         <td>{{ $user->created_at->diffForHumans() }}</td>
                         <td style="display: inline-flex; width: 100%;">
                             <a href="{{ route('user.edit', $user) }}" class="text-yellow mr-10" data-toggle="tooltip" title="show"><i class="fa fa-pencil"></i></a>
-                            <a href="{{ route('user.show', $user) }}" class="text-blue mr-10" data-toggle="toottip" title="Show"><i class="fa fa-eye"></i></a>
                             <delete-model url="{{ route('user.destroy', $user) }}"></delete-model>
                         </td>
                     </tr>

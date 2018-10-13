@@ -5,7 +5,7 @@
   <section class="content-header">
     <h1>
       Purchase
-      <small>Create</small>
+      <small>Edit</small>
     </h1>
     <ol class="breadcrumb">
       <li>
@@ -16,7 +16,7 @@
         <i class="fa fa-balance-scale"></i>
         <a href="{{ route('purchase.index') }}">Purchase</a>
       </li>
-      <li class="active">Create</li>
+      <li class="active">Edit</li>
     </ol>
   </section>
 
@@ -26,9 +26,10 @@
 
       <div class="col-md-6">
         <div class="box box-primary">
-          {!! Form::open(['route' => 'purchase.store']) !!}
+          {!! Form::model($purchase, ['route' => ['purchase.update', $purchase]]) !!}
+            {{ method_field('PATCH') }}
             <div class="box-header with-border">
-              Create new purchase
+              Edit purchase
             </div>
 
             <div class="box-body">

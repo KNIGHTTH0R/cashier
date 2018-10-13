@@ -24,8 +24,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => 'auth'], function () {
     Route::get('cashier', 'CashierController@index')->name('cashier');
     Route::resource('product', 'ProductController');
-    Route::resource('purchase', 'PurchaseController');
+    Route::resource('purchase', 'PurchaseController', ['except' => 'show']);
     Route::resource('unit', 'UnitController');
-
-    Route::resource('user', 'UserController');
+    Route::resource('user', 'UserController', ['except' => ['show']]);
+    Route::get('report/sales', 'ReportController@sales')->name('report.sales');
+    Route::get('report/purchase', 'ReportController@purchase')->name('report.purchase');
 });

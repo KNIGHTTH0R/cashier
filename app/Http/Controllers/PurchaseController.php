@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Purchase;
 use Illuminate\Http\Request;
+use App\Http\Requests\Purchase\StoreRequest;
+use App\Http\Requests\Purchase\UpdateRequest;
 
 class PurchaseController extends Controller
 {
@@ -14,7 +16,8 @@ class PurchaseController extends Controller
      */
     public function index()
     {
-        return view('purchases.index');
+        $purchases = Purchase::with(['product', 'unit', 'suplier'])->get();
+        return view('purchases.index', compact('purchases'));
     }
 
     /**
@@ -33,9 +36,10 @@ class PurchaseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
-        //
+        $purchase = Purchase::store($request->validated());
+        return redirect()->route('purchase.index');
     }
 
     /**
@@ -57,7 +61,7 @@ class PurchaseController extends Controller
      */
     public function edit(Purchase $purchase)
     {
-        //
+        return view('purchases.edit', compact('purchase'));
     }
 
     /**
@@ -67,9 +71,10 @@ class PurchaseController extends Controller
      * @param  \App\Purchase  $purchase
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Purchase $purchase)
+    public function update(UpdateRequest $request, Purchase $purchase)
     {
-        //
+        $purchase->edit($request->validated());
+        return redirect()->route('purchase.index');
     }
 
     /**
@@ -80,6 +85,7 @@ class PurchaseController extends Controller
      */
     public function destroy(Purchase $purchase)
     {
-        //
+        $purchase->delete();
+        return redirect()->route('purchase.index');
     }
 }

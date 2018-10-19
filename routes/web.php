@@ -28,5 +28,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('unit', 'UnitController');
     Route::resource('user', 'UserController', ['except' => ['show']]);
     Route::get('report/sales', 'ReportController@sales')->name('report.sales');
+    Route::get('report/backup', 'ReportController@backup')->name('report.backup');
     Route::get('report/purchase', 'ReportController@purchase')->name('report.purchase');
 });

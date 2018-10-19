@@ -110,8 +110,15 @@
               <span>Purchase</span>
             </a>
           </li>
+          <li class="{{ request()->is('report/backup') ? 'active': ''}}">
+            <a href="{{ route('report.backup') }}">
+              <i class="fa fa-circle-o"></i>
+              <span>Back up Data</span>
+            </a>
+          </li>
         </ul>
       </li>
+
 
       <li class="header">SETTING</li>
 

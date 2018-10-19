@@ -16,6 +16,11 @@ class ReportController extends Controller
         return view('reports.sales');
     }
 
+    public function backup()
+    {
+        return view('reports.backup');
+    }
+
     /**
      * purchase
      *

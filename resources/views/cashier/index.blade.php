@@ -5,13 +5,8 @@
   <section class="content-header">
   </section>
 
-  <section class="content">
-
-    <div class="row">
-      <div class="col-md-4 fill">
-
-        <cashier></cashier>
-
+  <section class="content"> <div class="row">
+      <div class="col-md-4 fill"> <cashier></cashier>
       </div>
 
       <div class="col-md-8 fill">
@@ -30,7 +25,7 @@
         <div class="col-md-12"></div>
       </div>
     </div>
-
   </section>
+
 
 @endsection

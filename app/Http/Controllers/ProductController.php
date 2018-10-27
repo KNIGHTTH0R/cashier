@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use Illuminate\Http\Request;
+use App\Http\Requests\Product\EditRequest;
+use App\Http\Requests\Product\StoreRequest;
 
 class ProductController extends Controller
 {
@@ -14,7 +16,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('products.index');
+        $products = Product::with(['prices.unit'])->get();
+        return view('products.index', compact('products'));
     }
 
     /**
@@ -33,10 +36,12 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
-        $product = Product::store([]);
-        return rediect()->route('product.show', compact('product'));
+        $product = Product::store($request->validated());
+        $price = Price::store(array_merge($request->validated(), ['product_id' => $product->id]));
+
+        return rediect()->route('product.show', $product);
     }
 
     /**
@@ -68,9 +73,17 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(EditRequest $request, Product $product)
     {
-        $product->edit([]);
+        $product->edit($request->validated());
+        $product->price($request['unit_id'])
+                ->edit(
+                    array_merge(
+                        $request->validated(),
+                        ['product_id' => $prodcut->id]
+                    )
+                );
+
         return redirect()->route('product.show', compact('product'));
     }
 

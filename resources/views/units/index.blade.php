@@ -45,7 +45,7 @@
                     <td>{{ $unit->name }}</td>
                     <td>{{ $unit->code }}</td>
                     <td style="display: inline-flex; width: 100%;">
-                      <a href="{{ route('unit.edit', $unit) }}" class="text-yellow mr-10" data-toggle="tooltip" title="show"><i class="fa fa-pencil"></i></a>
+                      <a href="{{ route('unit.edit', $unit) }}" class="text-yellow mr-10" data-toggle="tooltip" title="Edit"><i class="fa fa-pencil"></i></a>
                       <a href="{{ route('unit.show', $unit) }}" class="text-blue mr-10" data-toggle="toottip" title="Show"><i class="fa fa-eye"></i></a>
                       <delete-model url="{{ route('unit.destroy', $unit) }}"></delete-model>
                     </td>

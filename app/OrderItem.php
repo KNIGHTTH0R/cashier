@@ -11,7 +11,7 @@ class OrderItem extends Model
      *
      * @var array
      */
-    protected $fillable = ['order_id', 'product_id', 'unit_id', 'price', 'quantity'];
+    protected $fillable = ['order_id', 'product_id', 'product_name', 'unit_id', 'unit_name', 'price', 'quantity'];
 
     /**
      * order
@@ -54,7 +54,9 @@ class OrderItem extends Model
         return self::create([
           'order_id' => $request['order_id'],
           'product_id' => $request['product_id'],
+          'product_name' => Product::find($request['product_id'])->name,
           'unit_id' => $request['unit_id'],
+          'unit_name' => Unit::find($request['unit_id'])->name,
           'quantity' => $request['quantity'],
           'price' => $request['price'],
         ]);

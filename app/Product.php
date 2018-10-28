@@ -18,6 +18,20 @@ class Product extends Model
     protected $fillable = ['name', 'description', 'stok'];
 
     /**
+     * boot
+     *
+     * @return void
+     */
+    public static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($product) {
+            $product->prices()->delete();
+        });
+    }
+
+    /**
      * units
      *
      * @return void
